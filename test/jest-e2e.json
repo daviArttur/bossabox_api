@@ -1,0 +1,11 @@
+{
+  "testTimeout": 120000,
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "modulePaths": ["<rootDir>"],
+  "rootDir": "../",
+  "testEnvironment": "node",
+  "testRegex": ".test.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  }
+}

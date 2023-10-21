@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model tools {
+  id          Int    @id @default(autoincrement())
+  title       String
+  link        String
+  description String
+  tags        tags[]
+}
+
+model tags {
+  id     Int    @id @default(autoincrement())
+  tag    String
+  toolId Int
+
+  Tools tools @relation(fields: [toolId], references: [id])
+
+  @@index(fields: [tag], type: Hash)
+}
